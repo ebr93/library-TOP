@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="page">
+        <header>
+            <a href="#" class="logo">LibraryOnline</a>
+            <div class="btn-container">
+                <button id="clear">Clear</button>
+            </div>
+        </header>
+        <main>
+            <form action="" class="form">
+                <span>Book Information</span>
+                <div class="form-input">
+                    <input type="text" id="book_title" name="book_title" placeholder="Book Title" required>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="book_author" name="book_author" placeholder="Book's Author" required>
+                </div>
+                <div class="form-input">
+                    <input type="number" id="book_pages" name="book_pages" placeholder="Pages #" required>
+                </div>
+                <div class="form-input">
+                    <label for="read_book">
+                        <span>Read</span>
+                    </label>
+                    <input type="checkbox" id="read_book" name="read_book" value="read">
+                </div>
+                <button type="button" class="add_btn">Add</button>
+            </form>
+            <div class="library_container">
+
+            </div>
+            <script src="./functions.js"></script>
+        </main>
+    </section>
+</body>
+</html>

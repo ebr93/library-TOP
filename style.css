@@ -1,0 +1,122 @@
+
+/* Typography */
+html { 
+    /*for using REM units*/
+    /*
+    height: 100%;
+    width: 100%;
+    */
+    font-size: calc(0.625rem + 0.4vw);
+}
+ 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #222;
+}
+
+:root {
+    --large-spacing: 20px;
+    --medium-spacing: 10px;
+    --small-spacing: 5px;
+
+}
+
+.page {
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 110px 1fr;
+}
+
+header {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    text-shadow: 0.05em 0.05em 0.2em rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-size: calc(2.625rem + 0.4vw)
+}
+
+.btn-container {
+    width: min(20vw, 150px);
+    display: flex;
+    justify-content: end;
+}
+
+/* content */
+main {
+    /* height: calc(100vh - 110px); */
+    display: grid;
+    grid-template-columns: minmax(350px, 35vw) 1fr;
+    box-shadow: inset 0 1px 5px grey;
+    background-color: rgb(204, 202, 202);
+}
+
+/* left */
+.form {
+    height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: calc(1.625rem + 0.4vw);
+    margin: var(--large-spacing);
+    padding: var(--medium-spacing);
+    background-color: white;
+    border-radius: 15px;
+}
+
+.form-input {
+    border-radius: 15px;
+    margin: var(--medium-spacing);
+
+}
+
+.add_btn {
+    background-color: rgb(19, 141, 235);
+    color: white;
+    border-radius: 15px;
+}
+
+/* makes radio button into a square */
+input[type='radio'] {
+    box-sizing: border-box;
+    appearance: none;
+    background: white;
+    outline: 2px solid #333;
+    border: 3px solid white;
+    width: 16px;
+    height: 16px;
+}
+  
+input[type='radio']:checked {
+    background: #333;
+}
+
+/* right */
+.library_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--medium-spacing);
+    padding: var(--large-spacing);
+
+}
+
+.book {
+    background-color: white;
+    padding: var(--large-spacing);
+    border-radius: 15px;
+    font-size: calc(2rem + 0.4vw);
+    text-align: center;
+}
+
+.book > * {
+    font-size: (2rem + 0.4vw)
+}
+
+
+
