@@ -19,9 +19,9 @@ function addBookToLibrary(book) {
     library.push(book);
 }
 
-
-let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'Read');
-let jojolion = new Book('Jojolion Volume 1', 'Hiroiko Araki', 100, 'Read');
+// Examples
+let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+let jojolion = new Book('Jojolion Volume 1', 'Hiroiko Araki', 100, true);
 
 // Form objects and functions
 
@@ -39,7 +39,6 @@ let newBook = function(book_title, book_author, book_pages, read_book) {
     let newBook = new Book(book_title.value, book_author.value, book_pages.value, read_book.checked);
     return newBook;
 };
-
 let printLibrary = (library) => {
     library.forEach(book => {
         const bookContent = document.createElement(div);
@@ -53,7 +52,11 @@ let printLibrary = (library) => {
 let printBook = function(book) {       
     const bookContent = document.createElement('div');
     bookContent.classList.add('book');
-    bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n ${book.read}`;
+    if (book.read === true) {
+        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n "Read"`;
+    } else {
+        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n "Not Read"`;
+    }
     library_container.appendChild(bookContent);
 }
 
@@ -64,7 +67,7 @@ let clearForm = () => {
     read_book.checked = false;
 }
 
-let inputToLibrary = function() {
+let inputToLibrary = () => {
 
     if (book_title.value === '' || book_author.value === '' || isNaN(book_pages.value) === true || book_pages.value === '') {
         return;
