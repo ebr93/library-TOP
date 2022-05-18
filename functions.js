@@ -27,7 +27,6 @@ let jojolion = new Book('Jojolion Volume 1', 'Hiroiko Araki', 100, true);
 let addBookBtn = document.querySelector('.add_btn');
 let clearBooksBtn = document.querySelector('#clear');
 let libraryContainer = document.querySelector('.library_container');
-let books = document.querySelector('.book');
 
 
 let book_title = document.querySelector('#book_title');
@@ -35,8 +34,11 @@ let book_author = document.querySelector('#book_author');
 let book_pages = document.querySelector('#book_pages');
 let read_book = document.querySelector('#read_book');
 
+let bookTracker = 1;
+
 // Step 2 of 3
-let printBook = function(book) {       
+let printBook = function(book) {      
+    let bookClass = document.querySelector('.book'); 
     const bookContent = document.createElement('div');
     bookContent.classList.add('book');
     if (book.read === true) {
@@ -74,11 +76,20 @@ addBookToLibrary(theHobbit);
 printBook(theHobbit);
 printBook(jojolion);
 
-function clearFunction() {
-    libraryContainer.parentElement.removeChild(books);
+function clearAllBooks() {
+    while (libraryContainer.firstChild) {
+        libraryContainer.removeChild(libraryContainer.firstChild);
+    }
 }
+
+function clearBook() {
+    // this works to just delete 1 instance, in this case the first one
+    let books = document.querySelector('.book');
+    books.parentNode.removeChild(books);
+}
+
 
 // 
 addBookBtn.addEventListener('click', inputToLibrary);
-clearBooksBtn.addEventListener('click', clearFunction);
+clearBooksBtn.addEventListener('click', clearAllBooks);
 
