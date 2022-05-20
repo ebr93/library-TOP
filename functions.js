@@ -35,16 +35,24 @@ let book_pages = document.querySelector('#book_pages');
 let read_book = document.querySelector('#read_book');
 
 let bookTracker = 1;
+let buttonTracker = 1;
 
 // Step 2 of 3
 let printBook = function(book) {      
     let bookClass = document.querySelector('.book'); 
     const bookContent = document.createElement('div');
+    const bookButton = document.createElement('button');
     bookContent.classList.add('book');
     if (book.read === true) {
-        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n Read`;
+        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n`;
+        bookButton.innerText = 'Read';
+        bookButton.classList.add('readChange');
+        bookContent.appendChild(bookButton);
     } else {
-        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n Not Read`;
+        bookContent.innerText = `"${book.title}"\n ${book.author}\n ${book.pages} Pages\n`;
+        bookButton.innerText = 'Not Read';
+        bookButton.classList.add('readChange');
+        bookContent.appendChild(bookButton);
     }
     libraryContainer.appendChild(bookContent);
 }
@@ -66,30 +74,46 @@ let inputToLibrary = () => {
     }
 
     let book = new Book(book_title.value, book_author.value, book_pages.value, read_book.checked);
+    resetLibrary();
     addBookToLibrary(book);
-    printBook(book);
+    library.forEach(book => printBook(book));
     clearForm();
 }
 
-addBookToLibrary(jojolion);
 addBookToLibrary(theHobbit);
+addBookToLibrary(jojolion);
 printBook(theHobbit);
 printBook(jojolion);
 
 function clearAllBooks() {
+    resetLibrary();
+    library = [];
+}
+
+function resetLibrary() {
     while (libraryContainer.firstChild) {
         libraryContainer.removeChild(libraryContainer.firstChild);
     }
 }
 
+// this works to just delete 1 instance, in this case the first one
 function clearBook() {
-    // this works to just delete 1 instance, in this case the first one
     let books = document.querySelector('.book');
     books.parentNode.removeChild(books);
+    //this.parentNode.removeChild(this);
 }
 
-
-// 
+// Event Listeneners
 addBookBtn.addEventListener('click', inputToLibrary);
 clearBooksBtn.addEventListener('click', clearAllBooks);
 
+let btnToggle = document.getElementsByClassName("readChange");
+Array.from(btnToggle).forEach((btn) =>
+    btn.addEventListener('click', () => {
+        if (btn.textContent == "Read") {
+            btn.innerText = "Not Read"
+        } else if (btn.textContent == "Not Read"){
+            btn.innerText = "Read"
+        }
+    })
+)

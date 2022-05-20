@@ -121,3 +121,13 @@ input[type='radio']:checked {
 
 
 
+.readChange {
+    background-color: rgb(19, 141, 235);
+    color: white;
+    width: 155px;
+    border-radius: 15px;
+}
+
+.readChange:hover {
+    background-color: rgb(0, 116, 205);
+}
