@@ -37,14 +37,11 @@ class Book {
 
 
     readToggle(valueString) {
-        console.log(this.read);
-        console.log(valueString);
         if (valueString == "Read") {
             this.read = true;
         } else {
             this.read = false;
         }
-        console.log(this.read);
     }
 }
 
@@ -98,13 +95,13 @@ let inputToLibrary = () => {
 
     let book = new Book(book_title.value, book_author.value, book_pages.value, read_book.checked);
     addBookToLibrary(book);
-    // library.forEach(book => printBook(book));
     printBook(book);
     clearForm();
 };
 
 const personalLibrary = new Library();
 
+// functions to modify library UI and instance personalLibrary
 const addBookToLibrary = (book) => {
     personalLibrary.newBook = book;
 };
@@ -129,7 +126,6 @@ function clearBook() {
 */
 
 // Examples
-
 let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 let jojolion = new Book('Jojolion Volume 1', 'Hiroiko Araki', 100, true);
 addBookToLibrary(theHobbit);
@@ -137,23 +133,17 @@ addBookToLibrary(jojolion);
 printBook(theHobbit);
 printBook(jojolion);
 
-/*
-addBookBtn.addEventListener('click', inputToLibrary);
-clearBooksBtn.addEventListener('click', clearAllBooks);
-*/
-
+// functions with Event Listeners for all buttons 
 function buttonClicker() {
     let btnToggle = document.querySelectorAll(".readChange");
     document.addEventListener('click', (event) => {
         const { target } = event;
+        // this will modify the text on the book and update information within the (target) book object
         if (target.classList == 'readChange') {
-            let t = 0;
             if (target.textContent == "Read" && t == 0) {
                 target.innerText = "Not Read"
-                t++;
             } else if (t == 0) {
                 target.innerText = "Read"
-                t++;
             }
 
             for (let i = 0; i < personalLibrary.getLibrary.length; i++) {
@@ -163,8 +153,10 @@ function buttonClicker() {
                 }
             }
             return;
+        // adds book to library
         } else if (target.classList == 'add_btn') {
             inputToLibrary();
+        // clears all books
         } else if (target.id == 'clear') {
             clearAllBooks();
         }
