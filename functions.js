@@ -140,9 +140,9 @@ function buttonClicker() {
         const { target } = event;
         // this will modify the text on the book and update information within the (target) book object
         if (target.classList == 'readChange') {
-            if (target.textContent == "Read" && t == 0) {
+            if (target.textContent == "Read") {
                 target.innerText = "Not Read"
-            } else if (t == 0) {
+            } else if (target.textContent == 'Not Read') {
                 target.innerText = "Read"
             }
 
